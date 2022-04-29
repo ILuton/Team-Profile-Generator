@@ -12,9 +12,6 @@ class Manager {
         this.role = role;
     }
 
-    // getRole() {
-    //     return 'Manager'
-    // }
 }
 
 
