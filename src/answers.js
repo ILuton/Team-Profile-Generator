@@ -2,12 +2,16 @@ const inquirer = require("inquirer");
 const Manager = require("../lib_classes/Manager");
 const Engineer = require("../lib_classes/Engineer");
 const Intern = require("../lib_classes/Intern");
+// const test = document.querySelector(".main")
 
 
+const  teamArray = [];
+
+const fs = require("fs");
 
 
-const mangerQuestions = () => {
-
+const managerQuestions = () => {
+  
 inquirer
   .prompt([
     {
@@ -33,14 +37,39 @@ inquirer
   ])
   .then((answers) => {
     let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber, "Manager")
-    console.log(manager)
-    addOrQuit();
+
+    let test = `<div class="employeeContainer">
+    <div class="names">
+      <h1>${answers.name}</h1>
+      <div class="role">
+        <img />
+        <h2>Manager</h2>
+      </div>
+    </div>
+    <div class="info">
+        <ul>
+            <li>${answers.id}</li>
+            <li>${answers.email}</li>
+            <li>${answers.officeNumber}</li>
+        </ul>
+    </div>
+  </div>` 
+
+    fs.appendFile('index.html', test, function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+      teamArray.push(manager);
+      addOrQuit();
+        
+  })
+    
 })
 }
 
-mangerQuestions();
 
 const addOrQuit = () => {
+
+
   inquirer
   .prompt([
     {
@@ -57,8 +86,18 @@ const addOrQuit = () => {
     } else if (answers.choice === "Add Intern") {
       internQuestions();
     } else{
-      console.log("generate")
-    }
+      console.log("Your Team report has been Generated!")
+      console.log(teamArray);
+
+      let end =  `</main>
+      </body>
+    </html>`
+
+      fs.appendFile("index.html", end, function(err) {
+        if (err) throw err;
+        console.log("end added");
+      })
+  }
 })
 }
 
@@ -90,10 +129,36 @@ const engineerQuestions = () => {
     ])
     .then((answers) => {
       let engineer = new Engineer(answers.name, answers.id, answers.email, answers.github, "Engineer")
-      console.log(engineer)
+      
+
+      let engineerAdd = `<div class="employeeContainer">
+    <div class="names">
+      <h1>${answers.name}</h1>
+      <div class="role">
+        <img />
+        <h2>Engineer</h2>
+      </div>
+    </div>
+    <div class="info">
+        <ul>
+            <li>${answers.id}</li>
+            <li>${answers.email}</li>
+            <li>${answers.github}</li>
+        </ul>
+    </div>
+  </div>` 
+
+    fs.appendFile('index.html', engineerAdd, function (err) {
+      if (err) throw err;
+      console.log('engineer added');
+      teamArray.push(engineer);
       addOrQuit();
-  })
-  }
+    })
+
+    })
+
+}
+
 
 
 const internQuestions = () => {
@@ -123,7 +188,59 @@ const internQuestions = () => {
     ])
     .then((answers) => {
       let intern = new Intern(answers.name, answers.id, answers.email, answers.school, "Intern")
-      console.log(intern)
-      addOrQuit();
+
+      let internAdd = `<div class="employeeContainer">
+      <div class="names">
+        <h1>${answers.name}</h1>
+        <div class="role">
+          <img />
+          <h2>Intern</h2>
+        </div>
+      </div>
+      <div class="info">
+          <ul>
+              <li>${answers.id}</li>
+              <li>${answers.email}</li>
+              <li>${answers.School}</li>
+          </ul>
+      </div>
+    </div>` 
+  
+      fs.appendFile('index.html', internAdd, function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+        teamArray.push(intern);
+        addOrQuit();
+      })
+
   })
   }
+
+
+
+
+
+const init = () => {
+
+  let intro = `<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="./style.css">
+      <title>My Team</title>
+    </head>
+    <body>
+      <header class="header">
+        <h1>My Team</h1>
+      </header>`
+
+      fs.appendFile("index.html", intro, function(err) {
+        if (err) throw err;
+        console.log("intro added");
+        managerQuestions();
+      })
+}
+
+init();
