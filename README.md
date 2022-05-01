@@ -19,10 +19,10 @@ This project is used to take in information about your employees and generate an
   - [Questions](#questions)
 
 ## Installation
-To install this project you can copy all the files into your own folder or you can clone the repo. You will need to make sure you have node.js installed and that you have jest installed (used for testing). This program also uses the inquirer npm.
+To install this project you can copy all the files into your own folder or you can clone the repo. You will need to make sure you have node.js installed and that you have jest installed (used for testing). This program also uses the inquirer npm. You can always refer to the documentation for node, inquirer, and jest for more info. 
 
 ## Usage
-To use make sure you have downloaded and installed the neccesary programs and npms. Then you will open a new terminal and from the src folder in the project you will initilize it with index.js. After answering all the questions in the terminal you can select generate and your html file will generate in the src folder. From there you can open and view it in the browser. 
+To use make sure you have downloaded and installed the neccesary programs and npms. Then you will open a new terminal and from the src folder in the project you will initilize it with index.js. After answering all the questions in the terminal you can select generate and your html file will generate in the src folder. From there you can open and view it in the browser. Here is a video walkthrough of how to run https://youtu.be/nIzMLNvR5dg.
 
 ![alt text](./Screen%20Shot%202022-04-30%20at%204.16.03%20PM.png)
 
