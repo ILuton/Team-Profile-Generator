@@ -36,24 +36,25 @@ inquirer
       },
   ])
   .then((answers) => {
-    let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber, "Manager")
+    let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber, "Manager");
 
     let test = `<div class="employeeContainer">
     <div class="names">
       <h1>${answers.name}</h1>
       <div class="role">
-        <img />
+        <i class="fa-solid fa-crown"></i>
         <h2>Manager</h2>
       </div>
     </div>
     <div class="info">
         <ul>
-            <li>${answers.id}</li>
-            <li>${answers.email}</li>
-            <li>${answers.officeNumber}</li>
+            <li>ID: ${answers.id}</li>
+            <li>Email: <a href=mailto:"${answers.email}">${answers.email}</li></a>
+            <li>Office Number: ${answers.officeNumber}</li>
         </ul>
     </div>
-  </div>` 
+  </div>
+  ` 
 
     fs.appendFile('index.html', test, function (err) {
       if (err) throw err;
@@ -63,8 +64,8 @@ inquirer
         
   })
     
-})
-}
+});
+};
 
 
 const addOrQuit = () => {
@@ -99,7 +100,7 @@ const addOrQuit = () => {
       })
   }
 })
-}
+};
 
 
 const engineerQuestions = () => {
@@ -135,18 +136,19 @@ const engineerQuestions = () => {
     <div class="names">
       <h1>${answers.name}</h1>
       <div class="role">
-        <img />
+        <i class="fa-solid fa-screwdriver-wrench"></i>
         <h2>Engineer</h2>
       </div>
     </div>
     <div class="info">
         <ul>
-            <li>${answers.id}</li>
-            <li>${answers.email}</li>
-            <li>${answers.github}</li>
+            <li>ID: ${answers.id}</li>
+            <li>Email: <a href=mailto:"${answers.email}">${answers.email}</li></a>
+            <li>Github: <a href="${answers.github}">${answers.github}</a></li>
         </ul>
     </div>
-  </div>` 
+  </div>
+  ` 
 
     fs.appendFile('index.html', engineerAdd, function (err) {
       if (err) throw err;
@@ -157,7 +159,7 @@ const engineerQuestions = () => {
 
     })
 
-}
+};
 
 
 
@@ -193,18 +195,19 @@ const internQuestions = () => {
       <div class="names">
         <h1>${answers.name}</h1>
         <div class="role">
-          <img />
+          <i class="fa-solid fa-graduation-cap"></i>
           <h2>Intern</h2>
         </div>
       </div>
       <div class="info">
           <ul>
-              <li>${answers.id}</li>
-              <li>${answers.email}</li>
-              <li>${answers.School}</li>
+              <li>ID: ${answers.id}</li>
+              <li>Email: <a href=mailto:"${answers.email}">${answers.email}</li></a>
+              <li>School: ${answers.school}</li>
           </ul>
       </div>
-    </div>` 
+    </div>
+    ` 
   
       fs.appendFile('index.html', internAdd, function (err) {
         if (err) throw err;
@@ -214,10 +217,7 @@ const internQuestions = () => {
       })
 
   })
-  }
-
-
-
+  };
 
 
 const init = () => {
@@ -229,12 +229,15 @@ const init = () => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" href="./style.css">
+      <script src="https://kit.fontawesome.com/24eb628edf.js" crossorigin="anonymous"></script>
       <title>My Team</title>
     </head>
     <body>
       <header class="header">
         <h1>My Team</h1>
-      </header>`
+      </header>
+      <main>
+      `
 
       fs.appendFile("index.html", intro, function(err) {
         if (err) throw err;

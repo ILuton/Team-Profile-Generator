@@ -1,5 +1,4 @@
 const Employee = require("./Employee");
-const answers =require("../src/answers");
 
 
 class Manager {
